@@ -25,12 +25,16 @@ function displayInv(){
 			console.log("Catergory: " + res[i].department_name);
 			console.log("Price: $" + res[i].price);
 			console.log("Quantity Left: " + res[i].stock_quantity + "\n");
-		}
 		
+			if(i === res.length - 1){
+			purchase();
+			}
+		}
 	});
+}
 
 // Prompts user for what product they wish to purchase and quantity
-function start(){
+function purchase(){
 	inquirer.prompt([
 		{
 			type: "input",
@@ -70,49 +74,38 @@ function start(){
 
 				// Updates bamazon_db to reflect user purchasing the product
 				connection.query("UPDATE inventory SET ? WHERE ?", [{stock_quantity: newQty}, {id: answer.id}], function(err, res){
-					console.log("Purchase successful!");
-					console.log("Your total is: $" + total);
+					console.log("Purchase successful!\n Your total is: $" + total);
+
+					// Prompts user if they wish to buy more products or exit the program
+					inquirer.prompt([
+						{
+							type: "list",
+							message: "Would you like to buy more products?",
+							name: "userAnswer",
+							choices: ["yes", "no"]
+
+						}
+					]).then(function(answer){
+						switch(answer.userAnswer){
+							case "yes":
+								displayInv();
+								break;
+							case "no":
+								console.log("Good Bye.");
+								connection.end();
+								break;
+						}
+					});
 				});
-				promptUser();
 			}
 			else{
-				console.log("Insufficient stock!");
-			}
-		});
-	});
-}
-
-// Prompts user if they wish to buy more products or exit the program
-function promptUser(){
-	inquirer.prompt([
-		{
-			type: "list",
-			message: "Would you like to buy more products?",
-			name: "userAnswer",
-			choices: ["yes", "no"]
-
-		}
-	]).then(function(answer){
-		switch(answer.userAnswer){
-			case "yes":
-				showInv();
-				start();
-				break;
-			case "no":
-				console.log("Good Bye.");
+				console.log("Insufficient stock!\n");
 				connection.end();
-				break;
-			default:
-				console.log("Please enter yes or no");
-				promptUser();
-				break;
-		}
+			}
+		});		
 	});
 }
 
-
-
-
-
+displayInv();
 
 
