@@ -54,13 +54,14 @@ inquirer.prompt([
 		if(err){
 			console.log("Error occurred: " + err);
 		}
-		// Conditional to check if product is in stock
-			// If in stock run function to UPDATE 
-			// Console.log(success + their cost total)
-			// If not in stock console.log(insufficient stock)
 		else if(res[0].stock_quantity >= answer.qty){
-			purchase();
-			console.log("This product is available!");
+			var newQty = (res[0].stock_quantity - answer.qty);
+			var total = parseFloat(res[0].price * answer.qty);
+
+			connection.query("UPDATE inventory SET ? WHERE ?", [{stock_quantity: newQty}, {id: answer.id}], function(err, res){
+				console.log("Purchase successful!");
+				console.log("Your total is: $" + total);
+			});
 		}
 		else{
 			console.log("Insufficient stock!");
@@ -68,9 +69,6 @@ inquirer.prompt([
 	});
 });
 
-function purchase(){
-	connection.query("UPDATE ")
-}
 
 
 
