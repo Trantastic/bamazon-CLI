@@ -20,13 +20,14 @@ source schema.sql
 ```
 and lastly type _exit_ to exit out of mysql
 
+
 To run app, type into your terminal:
 ```
 node bamazon-CLI.js
 ```
 
 __Demo of Bamazon__
-
+![](https://github.com/Trantastic/bamazon-CLI/blob/master/images/bamazon1.gif)
 
 ## Built With
 
