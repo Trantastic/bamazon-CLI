@@ -1,6 +1,6 @@
 # bamazon-CLI
 This is a command-line interface (CLI) app that displays an inventory that users can view and purchase products from. I built this to learn about Node.js.
----
+
 ## Getting Started
 
 __Requirements__
