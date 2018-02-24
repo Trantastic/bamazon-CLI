@@ -30,6 +30,8 @@ __Demo of Bamazon__
 
 ![](https://github.com/Trantastic/bamazon-CLI/blob/master/images/bamazon1.gif)
 
+![](https://github.com/Trantastic/bamazon-CLI/blob/master/images/bamazon2.gif)
+
 ## Built With
 
 * Node.js
