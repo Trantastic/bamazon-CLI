@@ -5,17 +5,17 @@ This is a command-line interface (CLI) app that displays an inventory that users
 
 __Requirements__
 
-In the folder where you cloned this, you will need to type: 
+To install the necessary node packages, navigate to the folder where you cloned this and type into your terminal: 
 ```
 node install
 ```
-to install the necessary node packages to run this app. 
 
-Type:
+To run app, type into your terminal:
 ```
 node bamazon-CLI.js
 ```
-to start the app.
+
+__Demo of Bamazon__
 
 
-[built with]
+## Built With
