@@ -27,6 +27,7 @@ node bamazon-CLI.js
 ```
 
 __Demo of Bamazon__
+
 ![](https://github.com/Trantastic/bamazon-CLI/blob/master/images/bamazon1.gif)
 
 ## Built With
